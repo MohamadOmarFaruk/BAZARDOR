@@ -30,14 +30,14 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Technology That is being use in this Web Application and Technologies that will if anyone want to  understand this project
-  1.HTML
-  2.CSS
-  3.JavaScript
-  4.React
-  5.Next Js
-  6.Daisy UI
-  7.BETTER-AUTH
-  8.TypeScript
+  -[HTML]
+  -[CSS]
+  -[JavaScript]
+  -[React]
+  -[NextJs]
+  -[DaisyUI]
+  -[BETTER-AUTH]
+  -[TypeScript]
 
 
 ## Deployed on Vercel
