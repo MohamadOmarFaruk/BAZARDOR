@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import {  Hind_Siliguri } from "next/font/google";
 import "./globals.css";
+import Navabar from "@/Components/Navabar";
+import NavbTwo from "@/Components/NavbTwo";
+import Marquee from "@/Components/Marquee";
+import Footer from "@/Components/Footer";
 
 const Custom_Font_Web = Hind_Siliguri({
   subsets: ["bengali", "latin"],
@@ -18,7 +22,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${Custom_Font_Web}  h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+
+        <div>
+          <Navabar/>
+          <NavbTwo/>
+          <Marquee/>
+        </div>
+
+        {children}
+
+      <div>
+        <Footer/>
+      </div>
+
+        </body>
     </html>
   );
 }

@@ -29,7 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Technology That is being use in this Web Application and Technologies that will if anyone want to  understand this project
+  1.HTML
+  2.CSS
+  3.JavaScript
+  4.React
+  5.Next Js
+  6.Daisy UI
+  7.BETTER-AUTH
+  8.TypeScript
+
+
+## Deployed on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
