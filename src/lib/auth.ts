@@ -13,7 +13,7 @@ function createAuth() {
   const db = client.db(process.env.MONGODB_DB_NAME || "bazardor");
 
   return betterAuth({
-    emailAndPassword: { enabled: true },
+    emailAndPassword: { enabled: true, autoSignIn: false },
     socialProviders: {
       google: {
         clientId: process.env.GOOGLE_CLIENT_ID as string,

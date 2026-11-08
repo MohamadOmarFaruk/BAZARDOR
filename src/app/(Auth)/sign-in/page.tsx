@@ -3,61 +3,46 @@
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { signIn } from "@/lib/auth-client";
 
 export default function SignInPage() {
   const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    setIsSubmitting(true);
+    const data = Object.fromEntries(formData.entries());
 
-    try {
-      const { error } = await signIn.email({
-        email: String(formData.get("email") ?? ""),
-        password: String(formData.get("password") ?? ""),
-      });
+    const { error } = await signIn.email({
+      email: data.email as string,
+      password: data.password as string,
+      rememberMe: true,
+      callbackURL: "/",
+    });
 
-      if (error) {
-        toast.error(error.message || "সাইন ইন করা যায়নি। তথ্য যাচাই করে আবার চেষ্টা করুন।");
-        return;
-      }
-
-      router.replace("/");
-      router.refresh();
-    } catch (error) {
-      toast.error(
-        error instanceof Error
-          ? error.message
-          : "সাইন ইন করা যায়নি। আবার চেষ্টা করুন।"
-      );
-    } finally {
-      setIsSubmitting(false);
+    if (error) {
+      toast.error(error.message || "সাইন ইন করা যায়নি। আবার চেষ্টা করুন।");
+      return;
     }
+
+    router.push("/");
+    router.refresh();
   };
 
-  const handleSocialSignIn = async (provider: "google" | "github") => {
-    setIsSubmitting(true);
+  const OnHandleGoogleSignIn = async () => {
+    await signIn.social({
+      provider: "google",
+      callbackURL: "/",
+    });
+  };
 
-    try {
-      const { error } = await signIn.social({ provider, callbackURL: "/" });
-      if (error) {
-        toast.error(error.message || "সোশ্যাল সাইন ইন করা যায়নি।");
-      }
-    } catch (error) {
-      toast.error(
-        error instanceof Error
-          ? error.message
-          : "সোশ্যাল সাইন ইন করা যায়নি। আবার চেষ্টা করুন।"
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+  const OnHandleGitHubSignIn = async () => {
+    await signIn.social({
+      provider: "github",
+      callbackURL: "/",
+    });
   };
 
   return (
@@ -105,14 +90,18 @@ export default function SignInPage() {
               className="w-full rounded-lg border border-gray-200 px-4 py-3 text-sm outline-none transition focus:border-green-600 focus:ring-2 focus:ring-green-100"
             />
           </div>
-            <button disabled={isSubmitting} type="submit" className="container mx-auto btn group relative overflow-hidden rounded-xl border-0 bg-green-900 px-6 font-semibold text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-green-800 hover:shadow-[0_8px_25px_rgba(20,83,45,0.4)] active:translate-y-0 active:scale-95">
-              <span className="relative z-10 flex items-center gap-2">
-                {isSubmitting ? "অপেক্ষা করুন..." : "সাইন ইন"}
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
+
+          <button
+            type="submit"
+            className="container mx-auto btn group relative overflow-hidden rounded-xl border-0 bg-green-900 px-6 font-semibold text-white shadow-md transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-green-800 hover:shadow-[0_8px_25px_rgba(20,83,45,0.4)] active:translate-y-0 active:scale-95"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              সাইন ইন
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
               </span>
-            </button>
+            </span>
+          </button>
         </form>
 
         <div className="my-5 flex items-center gap-3">
@@ -124,8 +113,7 @@ export default function SignInPage() {
         <div className="grid grid-cols-2 gap-3">
           <button
             type="button"
-            disabled={isSubmitting}
-            onClick={() => handleSocialSignIn("google")}
+            onClick={OnHandleGoogleSignIn}
             className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-2.5 text-sm font-medium text-gray-800 transition hover:bg-gray-50"
           >
             <FcGoogle className="text-lg" />
@@ -133,9 +121,8 @@ export default function SignInPage() {
           </button>
           <button
             type="button"
-            disabled={isSubmitting}
+            onClick={OnHandleGitHubSignIn}
             className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white py-2.5 text-sm font-medium text-gray-800 transition hover:bg-gray-50"
-            onClick={() => handleSocialSignIn("github")}
           >
             <FaGithub className="text-lg" />
             GitHub
@@ -144,19 +131,13 @@ export default function SignInPage() {
 
         <p className="mt-5 text-center text-sm text-gray-700">
           অ্যাকাউন্ট নেই?{" "}
-          <Link
-            href="/sign-up"
-            className="font-medium text-green-600 hover:underline"
-          >
+          <Link href="/sign-up" className="font-medium text-green-600 hover:underline">
             সাইন আপ করুন
           </Link>
         </p>
       </div>
 
-      <Link
-        href={"/"}
-        className="mt-6 text-sm text-gray-500 hover:text-gray-700"
-      >
+      <Link href="/" className="mt-6 text-sm text-gray-500 hover:text-gray-700">
         ← হোম পেজে ফিরে যান
       </Link>
     </main>
