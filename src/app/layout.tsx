@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { Footer } from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Marquee from "react-fast-marquee";
+import PriceTicker from "@/components/PriceTicker";
+import Herosection from "@/components/Herosection";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const hindSiliguri = Hind_Siliguri({
+  subsets: ["bengali", "latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -21,9 +23,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${hindSiliguri.className} h-full antialiased bg-[#F0F5F0]`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+      <Navbar/>
+      <PriceTicker/>
+
+      <main>{children}</main>
+      <Toaster position = "top-center" />
+
+      <Footer/>
+      </body>
     </html>
   );
 }
