@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+                                                                                1. Project Name
 
-## Getting Started
+                                                                                BazarDor (বাজার দর)
 
-First, run the development server:
+                                                                                
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+                                                                                2. Short Description
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+BazarDor is a Bangla-based daily market price tracking web application designed to help people in Bangladesh easily check the prices of essential commodities. Users can explore product prices across different categories, compare current prices with previous records, and track daily price increases and decreases. The platform provides a simple, user-friendly interface to make market price information more accessible and transparent.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+                                                                        Live Demo: https://bazardor-c295.vercel.app/ (Click To see)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+                                                                            3. Technologies Used
+                                                                ===============================================
+                                                                =  1. Frontend: Next.js, React.js, TypeScript =
 
-To learn more about Next.js, take a look at the following resources:
+                                                                =  2. Styling: Tailwind CSS, DaisyUI          =
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+                                                                =  3. Authentication: Better Auth             =
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+                                                                =  4. Icons:  React Icons                     =
+ 
+                                                                =  5. Notifications: React Hot Toast          =
 
-## Deploy on Vercel
+                                                                =  6. API Integration: REST API, Fetch API    =
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+                                                                =  7. Deployment: Vercel                      =
+                                                                ===============================================
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+============================================================================5 Five Key Features===============================================================================================
+
+                            1. Daily Market Price Tracking: View the latest available prices of essential products, including rice, lentils, oil, vegetables, fish, meat, eggs, and spices.
+
+                            2. Price Comparison: Compare today's prices with yesterday's, last week's, and last month's prices to understand price changes over time.
+
+                            3. Category-Based Filtering: Browse products by category to quickly find specific commodities and their prices.
+
+                            4. Price Trend Monitoring: Identify products with increased or decreased prices through dedicated price trend sections.
+
+                            5. User Authentication: Secure user registration and login functionality using Better Auth, providing an authentication system for the application.
