@@ -30,7 +30,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <PriceTicker/>
 
       <main>{children}</main>
-      <Toaster position = "top-center" />
+      <Toaster position="top-right"
+          reverseOrder={false}
+          toastOptions={{
+            duration: 2500,
+            style: {
+              borderRadius: "12px",
+              background: "#26352B",
+              color: "#fff",
+              fontSize: "14px",
+            },
+          }} />
 
       <Footer/>
       </body>
